@@ -1,13 +1,12 @@
-
 import { CapacitorConfig } from '@capacitor/cli';
 
 const config: CapacitorConfig = {
-  appId: 'app.lovable.fbf2e3feeab64899aeea9a7d6c93decd',
+  appId: 'io.github.best-nwachinemere.timely',
   appName: 'timeflow-daily-rhythm',
   webDir: 'dist',
   server: {
-    url: 'https://fbf2e3fe-eab6-4899-aeea-9a7d6c93decd.lovableproject.com?forceHideBadge=true',
-    cleartext: true
+    url: 'https://best-nwachinemere.github.io/Timely/',
+    cleartext: false
   },
   plugins: {
     LocalNotifications: {
