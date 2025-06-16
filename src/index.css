@@ -1,0 +1,137 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
+
+@layer base {
+  :root {
+    --background: 222 28 22; /* Lighter */
+    --foreground: 215 28 90; /* #E2E8F0 - Silver */
+
+    --card: 222 28 26; /* Lighter card for contrast */
+    --card-foreground: 215 28 90;
+
+    --popover: 222 28 26; /* Consistent popover bg */
+    --popover-foreground: 215 28 90;
+
+    --primary: 228 100 62; /* #3A5FFF - Deep Sapphire */
+    --primary-foreground: 255 255 255;
+
+    --secondary: 222 28 24;
+    --secondary-foreground: 215 28 90;
+
+    --muted: 222 28 24;
+    --muted-foreground: 156 163 175;
+
+    --accent: 221 19 51; /* #6B7A99 - Slate Blue */
+    --accent-foreground: 255 255 255;
+
+    --destructive: 0 84 60; /* #EF4444 - Crimson */
+    --destructive-foreground: 255 255 255;
+
+    --border: 222 28 24;
+    --input: 222 28 24;
+    --ring: 228 100 62; /* #3A5FFF - Deep Sapphire */
+
+    --success: 160 68 52; /* #34D399 - Emerald */
+
+    --radius: 0.75rem;
+
+    --sidebar-background: 222 28 22; /* A bit lighter */
+    --sidebar-foreground: 215 28 90;
+    --sidebar-primary: 228 100 62;
+    --sidebar-primary-foreground: 255 255 255;
+    --sidebar-accent: 222 28 24;
+    --sidebar-accent-foreground: 215 28 90;
+    --sidebar-border: 222 28 24;
+    --sidebar-ring: 228 100 62;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@layer components {
+  .task-block {
+    @apply bg-card border border-border rounded-xl p-4 shadow-sm hover:shadow-md transition-all duration-200 cursor-grab active:cursor-grabbing;
+  }
+
+  .task-block:hover {
+    @apply border-primary/30 transform -translate-y-0.5;
+  }
+
+  .focus-view-task {
+    @apply bg-gradient-to-r from-primary/5 to-card border-l-4 border-primary rounded-r-xl p-4 mb-3 transition-all duration-200;
+  }
+
+  .goal-card {
+    @apply bg-card rounded-2xl p-6 shadow-sm border border-border hover:shadow-lg transition-all duration-300;
+  }
+
+  .progress-ring {
+    @apply transform -rotate-90;
+  }
+
+  .completed-task {
+    @apply bg-emerald-50 dark:bg-emerald-900/20 border-emerald-200 dark:border-emerald-800;
+  }
+
+  .missed-task {
+    @apply bg-red-50 dark:bg-red-900/20 border-red-200 dark:border-red-800 animate-pulse;
+  }
+
+  /* New gradient text utilities using Timely colors */
+  .gradient-text-primary {
+    @apply bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent;
+  }
+
+  .gradient-text-accent {
+    @apply bg-gradient-to-r from-accent to-primary bg-clip-text text-transparent;
+  }
+
+  /* Powder Mist accent backgrounds */
+  .bg-powder-mist {
+    background-color: hsl(var(--secondary));
+  }
+
+  .bg-powder-mist-20 {
+    background-color: hsla(var(--secondary), 0.2);
+  }
+}
+
+/* Smooth scrolling for better UX */
+@supports (scroll-behavior: smooth) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+/* Custom scrollbar with new colors */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: hsl(var(--muted));
+}
+
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--primary) / 0.6);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--primary) / 0.8);
+}
