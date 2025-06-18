@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
@@ -12,6 +11,10 @@ import { useProjects } from '@/hooks/useProjects';
 import { DailyEncouragement } from '@/components/DailyEncouragement';
 import { Plus, Calendar, Clock, Settings, Sparkles, TrendingUp, LogOut } from 'lucide-react';
 import { getGreeting } from '@/lib/greetings';
+import ProgressBar from "@/components/ProgressBar";
+import GoalCalendar from "@/components/GoalCalendar";
+import AnalyticsPanel from "@/components/AnalyticsPanel";
+import { AICoachService } from "@/services/AICoachService";
 
 const Dashboard = () => {
   const { user, signOut, profile } = useAuth();
@@ -44,6 +47,26 @@ const Dashboard = () => {
     }
     return 'No tasks yet';
   };
+
+  const goals = JSON.parse(localStorage.getItem("goals") || "[]");
+  const overallProgress =
+    goals.length > 0
+      ? Math.round(goals.reduce((sum: number, g: any) => sum + (g.progress || 0), 0) / goals.length)
+      : 0;
+
+  const topStreak = goals.reduce((max: number, g: any) => Math.max(max, g.streak || 0), 0);
+
+  // Example: Gather all session dates from journalNotes
+  const sessions =
+    goals
+      .flatMap((g: any) =>
+        (g.journalNotes || []).map((note: any) => ({
+          date: note.timestamp.slice(0, 10),
+          goalName: g.name,
+        }))
+      ) || [];
+
+  const aiTip = AICoachService.getTip(goals);
 
   if (loading) {
     return (
@@ -166,6 +189,17 @@ const Dashboard = () => {
           </Card>
         </div>
 
+        {/* Overall Progress Section */}
+        <div className="mb-6">
+          <h2 className="text-lg font-semibold mb-2">Overall Progress</h2>
+          <ProgressBar progress={overallProgress} />
+          <span className="text-xs text-muted-foreground">{overallProgress}% complete</span>
+        </div>
+
+        <div className="mb-4">
+          <span className="text-green-600 font-semibold">Top streak: {topStreak} days</span>
+        </div>
+
         {/* Enhanced Projects Grid */}
         {projects.length > 0 ? (
           <div className="space-y-6">
@@ -241,6 +275,20 @@ const Dashboard = () => {
             </CardContent>
           </Card>
         )}
+
+        {/* Your Goal Calendar */}
+        <div className="mb-8">
+          <h2 className="text-lg font-semibold mb-2">Your Goal Calendar</h2>
+          <GoalCalendar sessions={sessions} />
+        </div>
+
+        {/* Analytics Panel */}
+        <AnalyticsPanel />
+
+        {/* AI Coach Tip */}
+        <div className="mb-6 p-4 bg-accent rounded-xl shadow text-accent-foreground">
+          <span className="font-semibold">AI Coach says:</span> {aiTip}
+        </div>
       </main>
 
       <Footer />

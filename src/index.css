@@ -6,46 +6,62 @@
 
 @layer base {
   :root {
-    --background: 222 28 22; /* Lighter */
-    --foreground: 215 28 90; /* #E2E8F0 - Silver */
+    --background: 34 100% 98%;         /* #FEFAF5 (peachy background) */
+    --foreground: 240 3% 17%;          /* #2C2C2C (primary text) */
 
-    --card: 222 28 26; /* Lighter card for contrast */
-    --card-foreground: 215 28 90;
+    --card: 0 0% 100%;                 /* #fff */
+    --card-foreground: 240 3% 17%;
 
-    --popover: 222 28 26; /* Consistent popover bg */
-    --popover-foreground: 215 28 90;
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 3% 17%;
 
-    --primary: 228 100 62; /* #3A5FFF - Deep Sapphire */
-    --primary-foreground: 255 255 255;
+    --primary: 262 60% 60%;            /* #7F56D9 (new purple) */
+    --primary-foreground: 0 0% 100%;
 
-    --secondary: 222 28 24;
-    --secondary-foreground: 215 28 90;
+    --secondary: 38 100% 87%;          /* #FFE4B5 (accent peach) */
+    --secondary-foreground: 240 3% 17%;
 
-    --muted: 222 28 24;
-    --muted-foreground: 156 163 175;
+    --muted: 210 100% 95%;             /* #DCEFFF (sky glint) */
+    --muted-foreground: 240 3% 40%;
 
-    --accent: 221 19 51; /* #6B7A99 - Slate Blue */
-    --accent-foreground: 255 255 255;
+    --accent: 38 100% 87%;             /* #FFE4B5 (accent peach) */
+    --accent-foreground: 240 3% 17%;
 
-    --destructive: 0 84 60; /* #EF4444 - Crimson */
-    --destructive-foreground: 255 255 255;
+    --destructive: 0 91% 71%;          /* #F87171 (error) */
+    --destructive-foreground: 0 0% 100%;
 
-    --border: 222 28 24;
-    --input: 222 28 24;
-    --ring: 228 100 62; /* #3A5FFF - Deep Sapphire */
+    --border: 210 13% 90%;             /* #E0E4E7 */
+    --input: 210 13% 90%;
+    --ring: 262 60% 60%;               /* #7F56D9 */
 
-    --success: 160 68 52; /* #34D399 - Emerald */
+    --success: 160 64% 53%;            /* #34D399 */
 
     --radius: 0.75rem;
 
-    --sidebar-background: 222 28 22; /* A bit lighter */
-    --sidebar-foreground: 215 28 90;
-    --sidebar-primary: 228 100 62;
-    --sidebar-primary-foreground: 255 255 255;
-    --sidebar-accent: 222 28 24;
-    --sidebar-accent-foreground: 215 28 90;
-    --sidebar-border: 222 28 24;
-    --sidebar-ring: 228 100 62;
+    --sidebar-background: 34 100% 98%; /* #FEFAF5 */
+    --sidebar-foreground: 240 3% 17%;
+    --sidebar-primary: 262 60% 60%;    /* #7F56D9 */
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 38 100% 87%;     /* #FFE4B5 */
+    --sidebar-accent-foreground: 240 3% 17%;
+    --sidebar-border: 210 13% 90%;     /* #E0E4E7 */
+    --sidebar-ring: 262 60% 60%;       /* #7F56D9 */
+
+    --color-primary: #7A1FC9;
+    --color-accent: #F78CCF;
+    --color-surface: #EEE6FF;
+    --color-text-primary: #2E003E;
+    --color-success: #00C48C;
+    --color-warning: #FF6B6B;
+    --color-error: #FF6B6B;
+    --color-bg-dark: #120019;
+    --color-bg-light: #FDFBFF;
+  }
+
+  .dark {
+    --background: 0 0% 8%;             /* #141414 */
+    --foreground: 240 6% 96%;          /* #F4F4F5 */
+    /* You can add more dark mode overrides as needed */
   }
 }
 

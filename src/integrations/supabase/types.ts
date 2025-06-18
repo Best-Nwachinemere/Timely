@@ -146,7 +146,7 @@ export type Tables<
   }
     ? keyof (Database[DefaultSchemaTableNameOrOptions["schema"]]["Tables"] &
         Database[DefaultSchemaTableNameOrOptions["schema"]]["Views"])
-    : never = never,
+    : never,
 > = DefaultSchemaTableNameOrOptions extends { schema: keyof Database }
   ? (Database[DefaultSchemaTableNameOrOptions["schema"]]["Tables"] &
       Database[DefaultSchemaTableNameOrOptions["schema"]]["Views"])[TableName] extends {
@@ -245,3 +245,10 @@ export const Constants = {
     Enums: {},
   },
 } as const
+
+export interface GoalSession {
+  id: string;
+  date: string;
+  journalNotes?: string;
+  // ...other properties
+}

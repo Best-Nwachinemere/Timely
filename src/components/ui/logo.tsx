@@ -1,4 +1,4 @@
-
+import React from "react";
 import { Target } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
@@ -27,3 +27,27 @@ export const Logo = ({ className = "", showText = true }: LogoProps) => {
     </Link>
   );
 };
+
+const EmojiLogo = () => (
+  <span
+    style={{
+      display: "inline-block",
+      fontSize: "2.5rem",
+      animation: "bounce 1s infinite alternate",
+    }}
+    role="img"
+    aria-label="meh"
+  >
+    😑
+    <style>
+      {`
+        @keyframes bounce {
+          0% { transform: translateY(0); }
+          100% { transform: translateY(-10px); }
+        }
+      `}
+    </style>
+  </span>
+);
+
+export default EmojiLogo;

@@ -1,8 +1,13 @@
+body {
+  background-color: #FFF7F0;
+}
+
 #root {
   max-width: 1280px;
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
+  background-color: transparent;
 }
 
 .logo {
@@ -35,6 +40,9 @@
 
 .card {
   padding: 2em;
+  background: #fff;
+  border-radius: 1rem;
+  box-shadow: 0 2px 8px rgba(255, 111, 145, 0.08); 
 }
 
 .read-the-docs {

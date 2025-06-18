@@ -1,10 +1,45 @@
-
 import { LocalNotifications } from '@capacitor/local-notifications';
 import { Preferences } from '@capacitor/preferences';
 import { AIService } from './AIService';
 import type { ProjectWithTasks } from '@/hooks/useProjects';
 
+type MotivationCategory = "preSession" | "midSession" | "postSession" | "hypeUp" | "guiltTrip";
+
+export class MotivationService {
+  private static messages: Record<MotivationCategory, string[]> = {
+    preSession: [],
+    midSession: [],
+    postSession: [],
+    hypeUp: [],
+    guiltTrip: [],
+  };
+
+  static async loadMessages() {
+    if (MotivationService.messages.preSession.length > 0) return; // Already loaded
+    const res = await fetch("/assets/motivation_messages.json");
+    const data = await res.json();
+    MotivationService.messages = data;
+  }
+
+  static async getRandom(category: MotivationCategory): Promise<string> {
+    await MotivationService.loadMessages();
+    const arr = MotivationService.messages[category] || [];
+    if (arr.length === 0) return "Stay motivated!";
+    return arr[Math.floor(Math.random() * arr.length)];
+  }
+}
+
 export class NotificationService {
+  static init() {
+    if ("Notification" in window && Notification.permission !== "granted") {
+      Notification.requestPermission().then(() => {
+        console.log("Notification permissions granted");
+      });
+    }
+  }
+  static scheduleGoalNotifications(arg0: { name: string; preferredTimes: string[]; }) {
+    throw new Error("Method not implemented.");
+  }
   static async initialize() {
     try {
       // Request notification permissions

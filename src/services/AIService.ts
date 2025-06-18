@@ -1,5 +1,4 @@
-
-import { supabase } from '@/integrations/supabase/client';
+import { supabase } from '@/lib/supabaseClient';
 
 export class AIService {
   static async generateDailyEncouragement(userName: string, projects: any[]) {
@@ -48,4 +47,23 @@ export class AIService {
       }
     }
   }
+
+}
+
+const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inh1dmhrZXd5dHRsbmRmYXR1d3F2Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDk5Mzg4OTgsImV4cCI6MjA2NTUxNDg5OH0.o20piT6ELEYzSERV7fNn7NyN2CPgBkKiv-wTmjsiDK4EY";
+
+export async function generateNotificationMessage(type: string, context?: any) {
+  const response = await fetch(
+    "https://xuvhkewyttlndfatuwqv.supabase.co/functions/v1/generate-notification-message",
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${SUPABASE_ANON_KEY}`,
+      },
+      body: JSON.stringify({ type, context }),
+    }
+  );
+  const data = await response.json();
+  return data.message;
 }

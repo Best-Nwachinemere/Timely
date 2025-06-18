@@ -70,6 +70,16 @@ export default {
 				// Cleaned up Timely color palette
 				'cloudveil': 'hsl(var(--foreground))', // Stone Gray
 				'rose-ember': 'hsl(var(--destructive))', // Crimson
+				// New colors
+				"primary": "#7A1FC9",        // Royal Violet
+				"accent": "#F78CCF",         // Pink Aura
+				"surface": "#EEE6FF",        // Soft Lilac
+				"text-primary": "#2E003E", // Deep Plum
+				"success": "#00C48C",        // Lush Green
+				"warning": "#FF6B6B",        // Hot Coral
+				"error": "#FF6B6B",          // Hot Coral (same as warning)
+				"bg-dark": "#120019",      // Ink Black
+				"bg-light": "#FDFBFF",     // Porcelain Mist
 			},
 			borderRadius: {
 				lg: 'var(--radius)',

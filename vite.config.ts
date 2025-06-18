@@ -1,13 +1,13 @@
 import { defineConfig } from 'vite';
-import react from '@vitejs/plugin-react-swc';
-import { resolve } from 'path';
+import react from '@vitejs/plugin-react';
+import path from 'path';
 
 export default defineConfig({
-  base: '/Timely/',
+  base: '/Timely/', 
   plugins: [react()],
   resolve: {
     alias: {
-      '@': resolve(__dirname, 'src'),
+      '@': path.resolve(__dirname, 'src'),
     },
   },
 });
